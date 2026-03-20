@@ -1,3 +1,5 @@
+import Quote from "./Quote";
+
 export default function QuoteCard({ quote, loading, isLiked, onLike, onNext }) {
   return (
     <div className="w-full glass rounded-3xl p-6 md:p-10 animate-fade-in-up relative overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-blue-900/20">
@@ -11,19 +13,9 @@ export default function QuoteCard({ quote, loading, isLiked, onLike, onNext }) {
             <span className="text-3xl animate-spin mb-4">⏳</span>
             <p className="text-xl font-medium tracking-wide">Loading quote...</p>
           </div>
-        ) : (
-          <div key={quote?.id || 'empty'} className="animate-fade-in-up">
-            <h2 className="text-2xl md:text-3xl font-medium leading-relaxed tracking-wide text-slate-100 mb-6 drop-shadow-sm">
-              "{quote?.content}"
-            </h2>
-            <div className="flex items-center gap-3 justify-end">
-              <div className="h-[2px] w-8 bg-blue-500 rounded-full"></div>
-              <p className="text-lg text-slate-300 font-semibold italic">
-                {quote?.author}
-              </p>
-            </div>
-          </div>
-        )}
+        ) :
+          <Quote quote={quote} />
+        }
       </div>
 
       <div className="mt-10 flex items-center justify-between border-t border-slate-700/50 pt-6">
